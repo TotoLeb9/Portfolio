@@ -92,9 +92,22 @@ body {
     text-decoration: underline;
 }
 
-/* ----- FOOTER ----- */
 footer {
     text-align: center;
     padding: 30px;
     color: #666;
+}
+
+.tags {
+    margin-top: 10px;
+}
+
+.tags span {
+    background: #e4e3ff;
+    color: #4e54c8;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    margin-right: 8px;
+    display: inline-block;
 }
