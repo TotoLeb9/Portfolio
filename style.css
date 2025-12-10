@@ -1,21 +1,15 @@
-/* ----- VARIABLES & SETUP ----- */
+/* ----- VARIABLES ----- */
 :root {
-    /* Palette de couleurs moderne */
-    --color-bg-main: #f8fafc; /* Gris très clair, presque blanc */
+    --color-bg-main: #f8fafc;
     --color-bg-secondary: #ffffff;
-    
-    --color-primary-dark: #1e1b4b; /* Bleu nuit profond */
-    --color-primary: #4338ca; /* Indigo vibrant */
+    --color-primary-dark: #1e1b4b;
+    --color-primary: #4338ca;
     --color-primary-light: #818cf8;
-    
-    --color-accent: #06b6d4; /* Cyan électrique pour faire ressortir les éléments */
+    --color-accent: #06b6d4;
     --color-accent-glow: rgba(6, 182, 212, 0.3);
-
     --color-text-dark: #0f172a;
     --color-text-muted: #475569;
     --color-text-light: #e2e8f0;
-
-    /* Gradients */
     --gradient-hero: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
     --gradient-accent: linear-gradient(to right, var(--color-accent), #3b82f6);
 }
@@ -32,39 +26,36 @@ body {
     background: var(--color-bg-main);
     color: var(--color-text-dark);
     line-height: 1.6;
-    overflow-x: hidden;
 }
 
-/* Utilitaires */
 .container {
-    max-width: 1100px;
+    max-width: 1150px; /* Un peu plus large pour accommoder l'espacement */
     margin: 0 auto;
     padding: 0 20px;
 }
 
+/* Espacement vertical global augmenté */
 .section-padding {
-    padding: 80px 0;
+    padding: 100px 0;
 }
 
 .bg-light {
-    background-color: #f1f5f9; /* Légèrement différent du fond principal pour le contraste */
+    background-color: #f1f5f9;
 }
 
-/* ----- NAVBAR (Nouveau) ----- */
+/* ----- NAVBAR TRANSPARENTE ----- */
 .navbar {
-    position: fixed;
+    position: absolute; /* Place la nav SUR le header, tout en haut */
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(30, 27, 75, 0.95); /* Fond sombre semi-transparent */
-    backdrop-filter: blur(10px);
+    background: transparent; /* Pas de fond, on voit le dégradé bleu derrière */
     z-index: 100;
-    padding: 15px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 20px 0;
 }
 
 .nav-content {
-    max-width: 1100px;
+    max-width: 1150px;
     margin: 0 auto;
     padding: 0 20px;
     display: flex;
@@ -75,20 +66,19 @@ body {
 .logo {
     color: white;
     font-weight: 800;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     text-decoration: none;
-    letter-spacing: -0.5px;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 25px;
+    gap: 30px;
     align-items: center;
 }
 
 .nav-links a {
-    color: var(--color-text-light);
+    color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
     font-size: 0.95rem;
     font-weight: 600;
@@ -100,97 +90,93 @@ body {
 }
 
 .nav-btn-linkedin {
-    padding: 8px 16px;
-    background: rgba(255,255,255,0.1);
+    padding: 8px 18px;
+    background: rgba(255,255,255,0.15);
     border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.2);
 }
+
 .nav-btn-linkedin:hover {
-    background: var(--color-accent) !important;
+    background: white !important;
     color: var(--color-primary-dark) !important;
 }
 
-/* ----- HEADER / HERO ----- */
+/* ----- HERO ----- */
 .hero {
-    /* Augmentation de la hauteur et centrage */
-    min-height: 90vh; /* Prend presque tout l'écran */
+    min-height: 90vh; /* Hauteur quasi totale de l'écran */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     background: var(--gradient-hero);
     color: white;
-    padding: 120px 20px 60px; /* Padding haut pour compenser la navbar fixe */
+    padding: 100px 20px 60px; /* Padding top pour que le texte ne soit pas caché par la nav */
     position: relative;
     overflow: hidden;
 }
 
-/* Un petit effet de motif en arrière-plan */
 .hero-pattern {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-    background-size: 30px 30px;
+    background-size: 35px 35px;
     opacity: 0.3;
     pointer-events: none;
 }
 
 .hero-content {
     z-index: 2;
-    max-width: 700px;
+    max-width: 750px;
 }
 
 .greeting {
     display: block;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     color: var(--color-primary-light);
 }
 
 .hero h1 {
-    font-size: 3.5rem;
+    font-size: 3.8rem;
     font-weight: 800;
     letter-spacing: -1px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     line-height: 1.1;
 }
 
 .hero h2 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 400;
     color: var(--color-text-light);
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .accent {
-    /* Effet de texte dégradé pour le nom */
     background: var(--gradient-accent);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    display: inline-block;
 }
 
 .hero p {
-    font-size: 1.1rem;
-    color: rgba(255,255,255,0.8);
-    margin-bottom: 35px;
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 40px;
 }
 
 .cta-container {
     display: flex;
-    gap: 15px;
+    gap: 20px;
     justify-content: center;
 }
 
-/* Nouveaux styles de boutons */
 .btn {
     display: inline-block;
-    padding: 14px 32px;
+    padding: 15px 35px;
     border-radius: 8px;
     font-weight: 700;
     text-decoration: none;
     transition: all 0.3s ease;
-    font-size: 1rem;
 }
 
 .btn-primary {
@@ -200,8 +186,7 @@ body {
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px var(--color-accent-glow);
+    transform: translateY(-3px);
     background: white;
 }
 
@@ -216,24 +201,20 @@ body {
     background: rgba(255,255,255,0.1);
 }
 
-/* ----- TYPOGRAPHIE DE SECTION ----- */
+/* ----- SECTION STYLES ----- */
 .section-title {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     font-weight: 800;
     text-align: center;
     margin-bottom: 15px;
     color: var(--color-primary-dark);
-    position: relative;
 }
 
 .section-subtitle {
     text-align: center;
     color: var(--color-text-muted);
-    margin-bottom: 50px;
-    font-size: 1.1rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-bottom: 60px; /* Plus d'espace sous le titre */
+    font-size: 1.2rem;
 }
 
 /* ----- ABOUT ----- */
@@ -241,24 +222,20 @@ body {
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     color: var(--color-text-muted);
+    line-height: 1.8;
 }
+.about-content p { margin-bottom: 25px; }
+.about-content strong { color: var(--color-primary); }
 
-.about-content p {
-    margin-bottom: 20px;
-}
-
-.about-content strong {
-    color: var(--color-primary);
-}
-
-/* ----- PROJECTS (GRID SYSTEM) ----- */
+/* ----- PROJECTS GRID (ESPACEMENT AUGMENTÉ) ----- */
 .projects-grid {
     display: grid;
-    /* Créer une grille responsive : 1 colonne sur mobile, 2 sur tablette, 3 sur grand écran si besoin, mais ici on limite à 2 pour que les cartes aient de la place */
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 30px;
+    /* Grille responsive */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    /* Gap passé de 30px à 50px pour "espacer un peu plus" */
+    gap: 50px; 
 }
 
 .project-card {
@@ -270,22 +247,20 @@ body {
     transition: all 0.4s ease;
     display: flex;
     flex-direction: column;
-    height: 100%; /* Force les cartes à avoir la même hauteur */
 }
 
 .project-card:hover {
-    transform: translateY(-7px);
-    box-shadow: 0 20px 40px -10px rgba(67, 56, 202, 0.15); /* Ombre colorée au survol */
-    border-color: var(--color-primary-light);
+    transform: translateY(-10px); /* Lève plus haut au survol */
+    box-shadow: 0 25px 50px -12px rgba(67, 56, 202, 0.15);
 }
 
 .card-content {
-    padding: 30px 30px 15px;
-    flex-grow: 1; /* Le contenu prend l'espace disponible */
+    padding: 35px 35px 20px; /* Padding interne augmenté */
+    flex-grow: 1;
 }
 
 .project-card h3 {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 15px;
     color: var(--color-primary-dark);
@@ -293,36 +268,33 @@ body {
 
 .project-card p {
     color: var(--color-text-muted);
-    font-size: 0.95rem;
+    font-size: 1rem;
     margin-bottom: 20px;
+    line-height: 1.7;
 }
 
 .card-footer {
-    padding: 0 30px 30px;
+    padding: 0 35px 35px;
     border-top: 1px solid #f1f5f9;
-    padding-top: 20px;
+    padding-top: 25px;
 }
 
-/* Style des tags amélioré */
 .tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 20px;
+    gap: 10px; /* Espacement entre tags augmenté */
+    margin-bottom: 25px;
 }
 
 .tags span {
-    background: #eef2ff; /* Fond bleu très pâle */
+    background: #eef2ff;
     color: var(--color-primary);
-    padding: 5px 12px;
-    border-radius: 20px; /* Forme de pilule */
-    font-size: 0.75rem;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
     font-weight: 700;
-    letter-spacing: 0.5px;
-    border: 1px solid rgba(99, 102, 241, 0.1);
 }
 
-/* Lien avec flèche */
 .link-arrow {
     display: inline-flex;
     align-items: center;
@@ -332,76 +304,27 @@ body {
     transition: 0.3s;
 }
 
-.link-arrow svg {
-    margin-left: 5px;
-    transition: 0.3s;
-    width: 18px;
-}
-
-.link-arrow:hover {
-    color: var(--color-accent);
-}
-
-.link-arrow:hover svg {
-    transform: translateX(5px); /* La flèche bouge au survol */
-}
-
-.link-arrow.disabled {
-    color: var(--color-text-muted);
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-.link-arrow.disabled:hover svg{
-    transform: none;
-}
+.link-arrow svg { margin-left: 8px; width: 20px; transition: 0.3s; }
+.link-arrow:hover { color: var(--color-accent); }
+.link-arrow:hover svg { transform: translateX(5px); }
+.link-arrow.disabled { color: var(--color-text-muted); opacity: 0.6; cursor: not-allowed; }
 
 /* ----- FOOTER ----- */
 footer {
     background: var(--color-primary-dark);
     color: var(--color-text-light);
     text-align: center;
-    padding: 40px 20px;
+    padding: 50px 20px;
 }
-
-footer p {
-    margin-bottom: 15px;
-    opacity: 0.8;
-}
-
 .social-links-footer a {
-    color: white;
-    margin: 0 10px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.3s;
+    color: white; margin: 0 15px; text-decoration: none; font-weight: 600;
 }
+.social-links-footer a:hover { color: var(--color-accent); }
 
-.social-links-footer a:hover {
-    color: var(--color-accent);
-}
-
-/* ----- MEDIA QUERIES (Responsive) ----- */
+/* ----- MOBILE ----- */
 @media (max-width: 768px) {
-    .nav-links {
-        display: none; /* Simplification pour mobile : on cache le menu pour l'instant */
-    }
-    .nav-content {
-        justify-content: center;
-    }
-    
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-    
-    .cta-container {
-        flex-direction: column;
-    }
-    .btn {
-        width: 100%;
-        text-align: center;
-    }
-    
-    .section-title {
-        font-size: 1.8rem;
-    }
+    .nav-links { display: none; }
+    .hero h1 { font-size: 2.8rem; }
+    .section-padding { padding: 60px 0; }
+    .projects-grid { gap: 30px; } /* Moins d'espace sur mobile pour gagner de la place */
 }
