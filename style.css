@@ -1,113 +1,407 @@
-/* ----- GLOBAL ----- */
+/* ----- VARIABLES & SETUP ----- */
+:root {
+    /* Palette de couleurs moderne */
+    --color-bg-main: #f8fafc; /* Gris très clair, presque blanc */
+    --color-bg-secondary: #ffffff;
+    
+    --color-primary-dark: #1e1b4b; /* Bleu nuit profond */
+    --color-primary: #4338ca; /* Indigo vibrant */
+    --color-primary-light: #818cf8;
+    
+    --color-accent: #06b6d4; /* Cyan électrique pour faire ressortir les éléments */
+    --color-accent-glow: rgba(6, 182, 212, 0.3);
+
+    --color-text-dark: #0f172a;
+    --color-text-muted: #475569;
+    --color-text-light: #e2e8f0;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    --gradient-accent: linear-gradient(to right, var(--color-accent), #3b82f6);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
+    scroll-behavior: smooth;
 }
 
 body {
-    background: #f5f5f7;
-    color: #222;
-    line-height: 1.7;
+    background: var(--color-bg-main);
+    color: var(--color-text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* ----- HEADER ----- */
-.hero {
-    padding: 80px 20px;
-    text-align: center;
-    background: linear-gradient(135deg, #4e54c8, #8f94fb);
+/* Utilitaires */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-padding {
+    padding: 80px 0;
+}
+
+.bg-light {
+    background-color: #f1f5f9; /* Légèrement différent du fond principal pour le contraste */
+}
+
+/* ----- NAVBAR (Nouveau) ----- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(30, 27, 75, 0.95); /* Fond sombre semi-transparent */
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.nav-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
     color: white;
+    font-weight: 800;
+    font-size: 1.2rem;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--color-text-light);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--color-accent);
+}
+
+.nav-btn-linkedin {
+    padding: 8px 16px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 6px;
+}
+.nav-btn-linkedin:hover {
+    background: var(--color-accent) !important;
+    color: var(--color-primary-dark) !important;
+}
+
+/* ----- HEADER / HERO ----- */
+.hero {
+    /* Augmentation de la hauteur et centrage */
+    min-height: 90vh; /* Prend presque tout l'écran */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--gradient-hero);
+    color: white;
+    padding: 120px 20px 60px; /* Padding haut pour compenser la navbar fixe */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Un petit effet de motif en arrière-plan */
+.hero-pattern {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.hero-content {
+    z-index: 2;
+    max-width: 700px;
+}
+
+.greeting {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--color-primary-light);
 }
 
 .hero h1 {
-    font-size: 2.8rem;
-    margin-bottom: 10px;
-}
-.accent {
-    color: #ffd369;
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 5px;
+    line-height: 1.1;
 }
 
+.hero h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--color-text-light);
+    margin-bottom: 20px;
+}
+
+.accent {
+    /* Effet de texte dégradé pour le nom */
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 35px;
+}
+
+.cta-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+/* Nouveaux styles de boutons */
 .btn {
     display: inline-block;
-    margin-top: 20px;
-    padding: 12px 30px;
-    background: white;
-    color: #4e54c8;
-    border-radius: 30px;
-    font-weight: bold;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-weight: 700;
     text-decoration: none;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    font-size: 1rem;
 }
-.btn:hover {
-    opacity: 0.8;
+
+.btn-primary {
+    background: var(--color-accent);
+    color: var(--color-primary-dark);
+    box-shadow: 0 4px 15px var(--color-accent-glow);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px var(--color-accent-glow);
+    background: white;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255,255,255,0.3);
+}
+
+.btn-secondary:hover {
+    border-color: white;
+    background: rgba(255,255,255,0.1);
+}
+
+/* ----- TYPOGRAPHIE DE SECTION ----- */
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 15px;
+    color: var(--color-primary-dark);
+    position: relative;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--color-text-muted);
+    margin-bottom: 50px;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* ----- ABOUT ----- */
-.about {
+.about-content {
     max-width: 800px;
-    margin: 60px auto;
-    padding: 0 20px;
+    margin: 0 auto;
     text-align: center;
+    font-size: 1.15rem;
+    color: var(--color-text-muted);
 }
 
-/* ----- PROJECTS ----- */
-.projects {
-    max-width: 900px;
-    margin: 40px auto 80px;
-    padding: 0 20px;
-}
-
-.projects h2 {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 2rem;
-}
-
-.project {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
+.about-content p {
     margin-bottom: 20px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s;
 }
 
-.project:hover {
-    transform: translateY(-5px);
+.about-content strong {
+    color: var(--color-primary);
 }
 
-.project h3 {
-    margin-bottom: 10px;
+/* ----- PROJECTS (GRID SYSTEM) ----- */
+.projects-grid {
+    display: grid;
+    /* Créer une grille responsive : 1 colonne sur mobile, 2 sur tablette, 3 sur grand écran si besoin, mais ici on limite à 2 pour que les cartes aient de la place */
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 30px;
 }
 
-.link {
-    display: inline-block;
-    margin-top: 8px;
-    color: #4e54c8;
-    font-weight: bold;
-    text-decoration: none;
-}
-.link:hover {
-    text-decoration: underline;
-}
-
-footer {
-    text-align: center;
-    padding: 30px;
-    color: #666;
+.project-card {
+    background: var(--color-bg-secondary);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Force les cartes à avoir la même hauteur */
 }
 
+.project-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 20px 40px -10px rgba(67, 56, 202, 0.15); /* Ombre colorée au survol */
+    border-color: var(--color-primary-light);
+}
+
+.card-content {
+    padding: 30px 30px 15px;
+    flex-grow: 1; /* Le contenu prend l'espace disponible */
+}
+
+.project-card h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--color-primary-dark);
+}
+
+.project-card p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+.card-footer {
+    padding: 0 30px 30px;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 20px;
+}
+
+/* Style des tags amélioré */
 .tags {
-    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
 }
 
 .tags span {
-    background: #e4e3ff;
-    color: #4e54c8;
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 0.8rem;
-    margin-right: 8px;
-    display: inline-block;
+    background: #eef2ff; /* Fond bleu très pâle */
+    color: var(--color-primary);
+    padding: 5px 12px;
+    border-radius: 20px; /* Forme de pilule */
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+/* Lien avec flèche */
+.link-arrow {
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-primary);
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.link-arrow svg {
+    margin-left: 5px;
+    transition: 0.3s;
+    width: 18px;
+}
+
+.link-arrow:hover {
+    color: var(--color-accent);
+}
+
+.link-arrow:hover svg {
+    transform: translateX(5px); /* La flèche bouge au survol */
+}
+
+.link-arrow.disabled {
+    color: var(--color-text-muted);
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+.link-arrow.disabled:hover svg{
+    transform: none;
+}
+
+/* ----- FOOTER ----- */
+footer {
+    background: var(--color-primary-dark);
+    color: var(--color-text-light);
+    text-align: center;
+    padding: 40px 20px;
+}
+
+footer p {
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+
+.social-links-footer a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.social-links-footer a:hover {
+    color: var(--color-accent);
+}
+
+/* ----- MEDIA QUERIES (Responsive) ----- */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Simplification pour mobile : on cache le menu pour l'instant */
+    }
+    .nav-content {
+        justify-content: center;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .cta-container {
+        flex-direction: column;
+    }
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
 }
