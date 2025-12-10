@@ -3,65 +3,126 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mon Portfolio</title>
+    <title>Thomas Lebrun | Développeur Systèmes Embarqués</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#" class="logo">T.Lebrun</a>
+            <ul class="nav-links">
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#projects">Projets</a></li>
+                <li><a href="https://www.linkedin.com/in/lebrunthomas1/" class="nav-btn-linkedin">LinkedIn</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <header class="hero">
-        <h1>👋 Bonjour, je suis <span class="accent">Lebrun Thomas</span></h1>
-        <p>Développeur Systèmes embarqués • Créatif • Passionné</p>
-        <a href="#projects" class="btn">Voir mes projets</a>
+        <div class="hero-content">
+            <span class="greeting">👋 Bonjour, je suis</span>
+            <h1><span class="accent">Thomas Lebrun</span></h1>
+            <h2>Développeur Systèmes embarqués</h2>
+            <p>Créatif • Passionné • Spécialisé en BareMetal & RF</p>
+            
+            <div class="cta-container">
+                <a href="#projects" class="btn btn-primary">Voir mes projets</a>
+                <a href="https://www.linkedin.com/in/lebrunthomas1/" target="_blank" class="btn btn-secondary">Mon Linkedin</a>
+            </div>
+        </div>
+        <div class="hero-pattern"></div>
     </header>
 
-    <section class="about">
-        <h2>À propos</h2>
-        <p>
-            Fraichement diplômé d'un master en systèmes embarqués, 
-            je suis à la recherche d'une opportunité dans le même domaine. En attendant je me forme de mon côté et je réalise des projets pour progresser.
-        </p>
+    <section id="about" class="about section-padding">
+        <div class="container">
+            <h2 class="section-title">À propos de moi</h2>
+            <div class="about-content">
+                <p>
+                    Fraîchement diplômé d'un <strong>master en systèmes embarqués</strong>, 
+                    je suis à la recherche d'une opportunité passionnante dans ce domaine. 
+                </p>
+                <p>
+                    Je ne reste jamais inactif : je me forme continuellement sur les nouvelles architectures et je réalise des projets concrets, du <em>BareMetal</em> aux systèmes RF complexes, pour perfectionner mes compétences.
+                </p>
+            </div>
+        </div>
     </section>
 
-    <section id="projects" class="projects">
-        <h2>Projets</h2>
+    <section id="projects" class="projects section-padding bg-light">
+       <div class="container">
+           <h2 class="section-title">Mes Projets Récents</h2>
+           <p class="section-subtitle">Une sélection de mes travaux en C, BareMetal et Radio.</p>
 
-        <div class="project">
-            <h3>Projet 1 — Driver nRF24</h3>
-            <p>Le module nRF24L01 est un module radio qui permet de transmettre et reçevoir des informations sur la bande 2.4 Ghz. 
-                De nombreux drivers existent pour communiquer avec via SPI, cependant aucun ne correspondait à ce que je voulais pour un autre projet. 
-                J'ai donc décidé de créer mon propre driver en C, d'une part pour qu'il puisse parfaitement correspondre à mes attentes et pour apprendre 
-                à développer mes propres driver.
-            </p>
-            <div class="tags">
-                <span>SPI</span>
-                <span>C</span>
-                <span>BareMetal</span>
-                <span>Radio</span>
-                <span>nRF24</span>
-            </div>
-            <a href="https://github.com/TotoLeb9/nrf24_driver" target="_blank" class="link">Voir le projet</a>
-        </div>
+           <div class="projects-grid">
+               <div class="project-card">
+                   <div class="card-content">
+                       <h3>Driver nRF24 Personnalisé</h3>
+                       <p>Création d'un driver complet en C pour le module radio nRF24L01 (2.4 Ghz). Développé pour pallier les manques des bibliothèques existantes, ce projet se concentre sur l'optimisation SPI et une maîtrise totale de la communication radio.</p>
+                   </div>
+                   <div class="card-footer">
+                        <div class="tags">
+                            <span>SPI</span>
+                            <span>C</span>
+                            <span>BareMetal</span>
+                            <span>Radio RF</span>
+                        </div>
+                        <a href="https://github.com/TotoLeb9/nrf24_driver" target="_blank" class="link-arrow">
+                            Voir le projet 
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </a>
+                   </div>
+               </div>
 
-        <div class="project">
-            <h3>Projet 2 — BareMetal STM32 from scratch</h3>
-            <p>Je m'intéresse au systèmes embarqués et plus précisément au baremetal. Pour mieux appréhender ce domaine j'ai décidé 
-                de partir de 0 pour programmer des microcontrôleurs, du makefile au linker jusqu'a la création de mon HAL (Hardware Abstraction Layer) perso. 
-                Je mets sur git mes avancées en temps réel jusqu'à avoir mon HAL complet. J'ai décidé de commencer cette aventure sur STM32 pour leurs utilisations dans le monde professionnel.
-            </p>
-            <div class="tags">
-                <span>BareMetal</span>
-                <span>C</span>
-                <span>STM32</span>
-                <span>Architecture ARM Cortex-M</span>
-                <span>nRF24</span>
-            </div>
-            <a href="#" target="_blank" class="link">Voir le projet</a>
-        </div>
+               <div class="project-card">
+                   <div class="card-content">
+                       <h3>STM32 BareMetal "From Scratch"</h3>
+                       <p>Une plongée profonde au cœur du microcontrôleur. Je programme des STM32 (ARM Cortex-M) en partant de zéro : écriture du makefile, scripts de linker, et développement de ma propre couche d'abstraction matérielle (HAL) pour maîtriser l'architecture.</p>
+                   </div>
+                   <div class="card-footer">
+                        <div class="tags">
+                            <span>BareMetal</span>
+                            <span>C</span>
+                            <span>STM32</span>
+                            <span>ARM Cortex-M</span>
+                        </div>
+                        <a href="#" class="link-arrow disabled">
+                            En cours de dév.
+                        </a>
+                   </div>
+               </div>
 
+               <div class="project-card">
+                   <div class="card-content">
+                       <h3>Bateau Amorçeur Télécommandé</h3>
+                       <p>
+                           Projet "Full Stack" embarqué : conception d'un bateau de 1m. Intègre la communication radio via mon driver nRF24, la gestion de multiples capteurs et actionneurs via I2C/UART/SPI. Un cas d'usage réel de mes compétences.
+                       </p>
+                   </div>
+                   <div class="card-footer">
+                       <div class="tags">
+                           <span>Radio RF</span>
+                           <span>I2C/UART/SPI</span>
+                           <span>STM32</span>
+                           <span>Robotique</span>
+                       </div>
+                       <a href="https://github.com/TotoLeb9/Fishing-Boat/tree/master" target="_blank" class="link-arrow">
+                           Voir le projet
+                           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                       </a>
+                   </div>
+               </div>
+           </div>
+       </div>
     </section>
 
     <footer>
-        <p>© 2025 — Thomas</p>
+        <p>© 2025 — Thomas Lebrun. Codé avec passion.</p>
+        <div class="social-links-footer">
+            <a href="https://www.linkedin.com/in/lebrunthomas1/">LinkedIn</a>
+            <a href="https://github.com/TotoLeb9/">GitHub</a>
+        </div>
     </footer>
 </body>
 </html>
